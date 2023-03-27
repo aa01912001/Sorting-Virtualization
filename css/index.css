@@ -1,0 +1,138 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+}
+
+body {
+    background-color: #333333;
+}
+
+.nav {
+    background-color: #222222 ;
+    display: flex;
+    justify-content: center
+}
+
+.nav div {
+    color: #ffffff;
+    display: inline-block;
+    width: 20vw;
+    text-align: center;
+    font-size: 3vw;
+    
+}
+
+.nav div:hover {
+    background-color: #111111;
+}
+
+.main-container {
+    display: flex;
+}
+
+.animation {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.statistic {
+    font-size: 3vh;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly
+}
+
+.statistic div {
+    color: #aaaaaa;
+}
+
+.statistic span {
+    color: darkseagreen;
+}
+
+.display-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.setting-container {
+    width: 20%;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0px 0px 0px 10px;  
+}
+
+.setting-container div {
+    color: #ffffff;
+    font-size: 3vw;
+}
+
+.display-container div {
+    border: solid #111111 1px ;
+    border-bottom: 0px;
+    background-color: #ffffff;
+    width: 2vw;
+}
+
+.visible {
+    display: none;
+}
+
+
+.setting-container {
+    display: flex;
+
+}
+
+#times {
+    display: block;
+    width: 100%;
+    font-size: 4vw;
+    color: #ffffff;
+    margin: 0px 0px 0px 5px;
+}
+
+.algorithm {
+    display: flex;
+    flex-flow: row wrap;
+    z-index: 1;
+    position: fixed;
+    background-color: rgba(100, 100, 100, 0.9);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#set-hint {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(100, 100, 100, 0.9);
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 3vh;
+    padding: 10px 20px;
+}
+
+.algorithm-item {
+    color: #ffffff;
+    font-size: 3vw;
+    border-radius: 5%;
+    margin: 2px 5px;
+}
+
+.algorithm-item:hover {
+    color: #111111;
+}
+
+#times:hover {
+    color: #111111;
+}

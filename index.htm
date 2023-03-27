@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Let's Sort!</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script> 
+    
+</head>
+<body>
+    <div class="nav">
+        <div onclick="startOnclick()">Start</div>
+        <div onclick="randomOnclick()">Random</div>
+        <div onclick="resetOnclick()">reset</div>
+    </div>
+
+    <div class="main-container">
+        <div class="animation">
+            <div class="statistic">
+                <div>Swap Times:<br><span id="s1">0</span></div>
+                <div>Comparison Times:<br><span id="s2">0</span></div>
+                <div>Duration:<br><span id="s3">0</span>(ms)</div>
+            </div> 
+            <div class="display-container"></div>
+        </div>
+        <div class="setting-container">
+            <div>Algorithm:</div>
+            <input id="algorithm-input" onclick="algorithmInputOnclick()" type="text" value="Insertion Sort">
+            <div>Delay(ms):</div>
+            <input id="delay" type="text" value="30">
+            <div>Total:</div>
+            <input id="total" type="text" value="50">
+            <div>Max:</div>
+            <input id="max" type="text" value="40">
+            <div>Min:</div>
+            <input id="min" type="text" value="1">
+            <button onclick="setOnclick()">Set</button>
+        </div>
+    </div>
+
+    <div class="visible">
+        <div class="algorithm">
+            <div id="times" onclick="timesOnclick()">&times</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Insertion Sort`)">Insertion Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Selection Sort`)">Selection Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Bubble Sort`)">Bubble Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Cocktail Sort`)">Cocktail Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Gnome Sort`)">Gnome Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Quick Sort`)">Quick Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Merge Sort`)">Merge Sort</div>
+            <div class="algorithm-item" onclick="algorithmItemOnclick(`Heap Sort`)">Heap Sort</div>
+        </div>
+    </div>
+    <div class="visible" id="set-hint">Your settings have been saved</div>
+
+</body>
+</html>
