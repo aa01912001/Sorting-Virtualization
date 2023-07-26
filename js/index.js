@@ -27,12 +27,12 @@ const sortingStrategies = {
 
 async function insertionSort() {
     let len = randomNumbers.length
-    for (let i=1; i<len; i++) {
-        for (let j=i; j>=1; j--) {
+    for (let i = 1; i < len; i++) {
+        for (let j = i; j >= 1; j--) {
             countAndRenderForComparison()
-            if (randomNumbers[j] < randomNumbers[j-1]) {
+            if (randomNumbers[j] < randomNumbers[j - 1]) {
                 countAndRenderForSwap()
-                await swapTwoArrayElementByIndex(j, j-1);
+                await swapTwoArrayElementByIndex(j, j - 1);
             } else {
                 break;
             }
@@ -53,9 +53,9 @@ function countAndRenderForComparison() {
 
 async function selectionSort() {
     let len = randomNumbers.length
-    for (let i=0; i<len-1; i++) {
+    for (let i = 0; i < len - 1; i++) {
         let minIndex = i;
-        for (let j=i+1; j<len; j++) {
+        for (let j = i + 1; j < len; j++) {
             countAndRenderForComparison()
             if (randomNumbers[j] < randomNumbers[minIndex]) {
                 minIndex = j;
@@ -68,14 +68,14 @@ async function selectionSort() {
 
 async function bubbleSort() {
     let len = randomNumbers.length
-    for (let i=0; i<len-1; i++) {
+    for (let i = 0; i < len - 1; i++) {
         let hasSwap = false
-        for (let j=len-1; j>i; j--) {
+        for (let j = len - 1; j > i; j--) {
             countAndRenderForComparison();
-            if (randomNumbers[j] < randomNumbers[j-1]) {
+            if (randomNumbers[j] < randomNumbers[j - 1]) {
                 countAndRenderForSwap();
                 hasSwap = true;
-                await swapTwoArrayElementByIndex(j, j-1);
+                await swapTwoArrayElementByIndex(j, j - 1);
             }
         }
 
@@ -85,26 +85,26 @@ async function bubbleSort() {
 
 async function cocktailSort() {
     let len = randomNumbers.length
-    for (let i=0; i<len; i++) {
+    for (let i = 0; i < len; i++) {
         let hasSwap = false
-        for (let j=i; j<len-i-1; j++) {
+        for (let j = i; j < len - i - 1; j++) {
             countAndRenderForComparison();
-            if (randomNumbers[j] > randomNumbers[j+1]) {
+            if (randomNumbers[j] > randomNumbers[j + 1]) {
                 countAndRenderForSwap();
                 hasSwap = true;
-                await swapTwoArrayElementByIndex(j, j+1);
+                await swapTwoArrayElementByIndex(j, j + 1);
             }
 
         }
         if (!hasSwap) return;
 
         hasSwap = false;
-        for (let k=len-i-1; k>=i+1; k--) {
+        for (let k = len - i - 1; k >= i + 1; k--) {
             countAndRenderForComparison();
-            if (randomNumbers[k] < randomNumbers[k-1]) {
+            if (randomNumbers[k] < randomNumbers[k - 1]) {
                 countAndRenderForSwap();
                 hasSwap = true;
-                await swapTwoArrayElementByIndex(k, k-1);
+                await swapTwoArrayElementByIndex(k, k - 1);
             }
         }
         if (!hasSwap) return;
@@ -116,19 +116,19 @@ async function gnomeSort() {
     let pos = 0;
     while (pos < len) {
         countAndRenderForComparison();
-        if (pos == 0 || randomNumbers[pos] >= randomNumbers[pos-1]) {
+        if (pos == 0 || randomNumbers[pos] >= randomNumbers[pos - 1]) {
             pos++;
         } else {
             countAndRenderForSwap();
-            await swapTwoArrayElementByIndex(pos, pos-1);
+            await swapTwoArrayElementByIndex(pos, pos - 1);
             pos--;
         }
     }
 }
 
-async function quickSort(left=0, right=randomNumbers.length-1) {
+async function quickSort(left = 0, right = randomNumbers.length - 1) {
     if (left >= right) return;
-    
+
     i = left;
     j = right;
     pivot = randomNumbers[left];
@@ -149,23 +149,23 @@ async function quickSort(left=0, right=randomNumbers.length-1) {
     countAndRenderForSwap();
     await swapTwoArrayElementByIndex(left, i);
 
-    await quickSort(left, i-1);
-    await quickSort(i+1, right);
+    await quickSort(left, i - 1);
+    await quickSort(i + 1, right);
 }
 
-async function mergeSort(left = 0, right=randomNumbers.length-1) {
+async function mergeSort(left = 0, right = randomNumbers.length - 1) {
     if (left >= right) return;
     let mid = left + Math.floor((right - left) / 2);
     // divide process
     await mergeSort(left, mid);
-    await mergeSort(mid+1, right);
+    await mergeSort(mid + 1, right);
     // merge process
-    let arrLeft = [...randomNumbers.slice(left,mid+1)];
-    let arrRight = [...randomNumbers.slice(mid+1, right+1)]
+    let arrLeft = [...randomNumbers.slice(left, mid + 1)];
+    let arrRight = [...randomNumbers.slice(mid + 1, right + 1)]
     let p1 = 0, p2 = 0, cur = left;
     while (p1 < arrLeft.length && p2 < arrRight.length) {
         countAndRenderForComparison()
-        if(arrLeft[p1] <= arrRight[p2]) {
+        if (arrLeft[p1] <= arrRight[p2]) {
             countAndRenderForSwap();
             await assignArrayElementByIndex(cur, arrLeft[p1]);
             p1++;
@@ -198,7 +198,7 @@ async function mergeSort(left = 0, right=randomNumbers.length-1) {
 async function heapSort() {
     let maxheapIndex = randomNumbers.length - 1;
     await createMaxHeap(maxheapIndex);
-    for (let i=randomNumbers.length-1; i>=0; i--) {
+    for (let i = randomNumbers.length - 1; i >= 0; i--) {
         countAndRenderForSwap();
         await swapTwoArrayElementByIndex(0, maxheapIndex);
         maxheapIndex--;
@@ -208,7 +208,7 @@ async function heapSort() {
 }
 
 async function createMaxHeap(maxheapIndex) {
-    for (let i=Math.floor(maxheapIndex/2); i>=0; i--) {
+    for (let i = Math.floor(maxheapIndex / 2); i >= 0; i--) {
         await maxHeapify(i, maxheapIndex);
     }
     return;
@@ -251,8 +251,8 @@ function randomOnclick() {
     randomNumbers = []
     let displayHtmlStringArray = []
     let displayHtmlString = ""
-    for (let i=0; i<TOTAL; i++) {
-        randomNumbers.push( Math.floor(Math.random() * (MAX - MIN + 1) ) + MIN);
+    for (let i = 0; i < TOTAL; i++) {
+        randomNumbers.push(Math.floor(Math.random() * (MAX - MIN + 1)) + MIN);
         displayHtmlStringArray.push(`<div style="height:` + randomNumbers[i] + `vh"></div>`);
         displayHtmlString += displayHtmlStringArray[i]
     }
@@ -272,7 +272,7 @@ function resetOnclick() {
     randomNumbers = [...preNumbers]
     let displayHtmlStringArray = []
     let displayHtmlString = ""
-    for (let i=0; i<TOTAL; i++) {
+    for (let i = 0; i < TOTAL; i++) {
         displayHtmlStringArray.push(`<div style="height:` + randomNumbers[i] + `vh"></div>`);
         displayHtmlString += displayHtmlStringArray[i]
     }
@@ -299,11 +299,11 @@ async function startOnclick() {
     // final animation
     let len = randomNumbers.length
     let displayContainer = document.getElementsByClassName("display-container")[0]
-    for (let i=0; i<len; i++) {
+    for (let i = 0; i < len; i++) {
         displayContainer.getElementsByTagName("div")[i].style.backgroundColor = "Green"
 
         await sleep(DELAY)
-        beep(DELAY, (randomNumbers[i])*5+300, 10, "sine")
+        beep(DELAY, (randomNumbers[i]) * 5 + 300, 10, "sine")
 
         displayContainer.getElementsByTagName("div")[i].style.backgroundColor = "White"
     }
@@ -321,7 +321,7 @@ async function swapTwoArrayElementByIndex(index1, index2) {
     randomNumbers[index1] = randomNumbers[index2];
     randomNumbers[index2] = tmp;
 
-    beep(DELAY, (randomNumbers[index1])*5+100, 10, "sine")
+    beep(DELAY, (randomNumbers[index1]) * 5 + 100, 10, "sine")
 
     let div1 = displayContainer.getElementsByTagName("div")[index1];
     let div2 = displayContainer.getElementsByTagName("div")[index2];
@@ -339,7 +339,7 @@ async function assignArrayElementByIndex(index, value) {
     await sleep(DELAY)
     randomNumbers[index] = value
 
-    beep(DELAY, (randomNumbers[index])*5+100, 10, "sine")
+    beep(DELAY, (randomNumbers[index]) * 5 + 100, 10, "sine")
 
     let div = displayContainer.getElementsByTagName("div")[index];
     div.style.height = value + "vh";
@@ -351,16 +351,16 @@ async function assignArrayElementByIndex(index, value) {
 
 function swapElements(el1, el2) {
     var p2 = el2.parentNode, n2 = el2.nextSibling
-    if (n2 === el1)  {
+    if (n2 === el1) {
         p2.insertBefore(el1, el2)
-        return 
+        return
     }
     el1.parentNode.insertBefore(el2, el1);
     p2.insertBefore(el1, n2);
 }
 
-function sleep(milliseconds) {  
-    return new Promise(resolve => setTimeout(resolve, milliseconds));  
+function sleep(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 function algorithmInputOnclick() {
@@ -387,7 +387,7 @@ function setOnclick() {
     clearInterval(setIntervalID);
     let op = 1;  // initial opacity
     setIntervalID = setInterval(function () {
-        if (op <= 0.1){
+        if (op <= 0.1) {
             clearInterval(setIntervalID);
             hintElement.style.display = 'none';
         }
@@ -408,14 +408,14 @@ var audioCtx = new (window.AudioContext || window.webkitAudioContext || window.a
 function beep(duration, frequency, volume, type) {
     var oscillator = audioCtx.createOscillator();
     var gainNode = audioCtx.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
 
-    gainNode.gain.value = volume/100; // 1 -> 100 %
-    if (frequency){oscillator.frequency.value = frequency;}
-    if (type){oscillator.type = type;}
-    
+    gainNode.gain.value = volume / 100; // 1 -> 100 %
+    if (frequency) { oscillator.frequency.value = frequency; }
+    if (type) { oscillator.type = type; }
+
     oscillator.start(audioCtx.currentTime);
     oscillator.stop(audioCtx.currentTime + ((duration || 500) / 1000));
 };
