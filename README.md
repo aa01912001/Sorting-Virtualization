@@ -1,9 +1,7 @@
 # Let's Sort
 A sorting virtualization GUI by basic HTML, CSS and JS.
 
-
-![](https://hackmd.io/_uploads/H1Xzo50ch.gif)
-
+![Recording 2023-07-26 at 21 09 16](https://github.com/aa01912001/Sorting-Virtualization/assets/35134755/d1e51d55-aa32-4986-b575-f13574e6f3b4)
 
 ## sorting algrithoms:
 In this app, you can select any sorting strategy from following list to see how they work
